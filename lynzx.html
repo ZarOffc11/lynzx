@@ -374,108 +374,83 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.5);
             position: relative;
         }
-        <style>
-.film {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
-}
+        
+        .film {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
 
-.film iframe {
-    width: 100%;
-    max-width: 1280px; /* Lebar maksimum */
-    height: 568px; /* Proporsi 16:9 */
-    border: 5px solid white;
-    border-radius: 10px;
-    transition: box-shadow 0.5s ease, border-color 0.5s ease;
-}
+        .film iframe, .film video {
+            width: 100%;
+            max-width: 1280px;
+            height: 568px;
+            border: 5px solid white;
+            border-radius: 10px;
+            transition: box-shadow 0.5s ease, border-color 0.5s ease;
+        }
 
-/* Glow effect saat video di layar */
-.film iframe.glow {
-    box-shadow: 0 0 20px 5px rgba(255,255,255,0.8);
-    border-color: #fff;
-}
+        /* Glow effect saat video di layar */
+        .film iframe.glow, .film video.glow {
+            box-shadow: 0 0 20px 5px rgba(255,255,255,0.8);
+            border-color: #fff;
+        }
 
-.desc {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 15px;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #808080;
-}
-.desc strong {
-    color: #ffcc00;
-    font-size: 18px;
-    display: block;
-    margin-bottom: 8px;
-}
-.typewriter {
-  font-weight: bold;
-  font-size: 18px;
-  color: #FF0000;
-  text-align: center;
-  margin-top: 10px;
-  white-space: pre-line;
-}
-.cursor {
-  display: inline-block;
-  width: 3px;
-  background-color: #FF0000;
-  animation: blink 0.7s step-end infinite;
-  margin-left: 2px;
-}
+        .desc {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 15px;
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--desc-color);
+        }
+        .desc strong {
+            color: var(--title-color);
+            font-size: 18px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .typewriter {
+            font-weight: bold;
+            font-size: 18px;
+            color: #FF0000;
+            text-align: center;
+            margin-top: 10px;
+            white-space: pre-line;
+        }
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: #FF0000;
+            animation: blink 0.7s step-end infinite;
+            margin-left: 2px;
+        }
 
-@keyframes blink {
-  50% { background-color: transparent; }
-}
-<style>
-iframe {
-    border: 5px solid white;
-    border-radius: 10px;
-    transition: box-shadow 0.5s ease, border-color 0.5s ease;
-}
+        @keyframes blink {
+            50% { background-color: transparent; }
+        }
+        
+        .video-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+        }
 
-/* Efek glow saat video masuk layar */
-iframe.glow {
-    box-shadow: 0 0 20px 5px rgba(255,255,255,0.8);
-    border-color: #fff;
-}
+        .video-controls button {
+            background: var(--button-bg);
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
 
-.video-controls {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    padding: 10px;
-}
-
-.video-controls button {
-    background: #555;
-    color: white;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.video-controls button:hover {
-    background: #777;
-}
-
-.desc {
-    padding: 15px;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #ddd;
-}
-
-.desc strong {
-    color: #ffcc00;
-    font-size: 18px;
-    display: block;
-    margin-bottom: 8px;
-}
+        .video-controls button:hover {
+            background: var(--button-hover);
+        }
     </style>
 </head>
 <body>
@@ -527,148 +502,84 @@ iframe.glow {
     <!-- Home Page (Hidden by default) -->
     <div class="home-page" id="home-page">
         <header>
-  🇮🇩 BIOSKOP LYNZX 🇮🇩
-</header>
+            🇮🇩 BIOSKOP LYNZX 🇮🇩
+        </header>
         <div id="typewriter" class="typewriter"></div>
         <div class="film-container">
-        <div style="height:80px;"></div>
-    <div class="film">
-  <!-- Video Lokal (offline) -->
-  <video id="offline-video2" controls width="100%" height="500" style="display:none;" preload="auto">
-    <source src="video1.mp4" type="video/mp4">
-  </video>
+            <div style="height:80px;"></div>
+            <div class="film">
+                <iframe id="online-video1" 
+                    src="https://www.youtube.com/embed/80PchCwaPp0"
+                    width="100%" height="500" frameborder="0"
+                    allowfullscreen>
+                </iframe>
+            </div>
 
-  <!-- YouTube Embed (online) -->
-  <iframe id="online-video2" 
-      src="https://www.youtube.com/embed/80PchCwaPp0"
-      width="100%" height="500" frameborder="0"
-      allowfullscreen>
-  </iframe>
-</div>
+            <div class="desc">
+                <strong>anime wabah virus yang tersebar</strong>
+                menceritakan tentang adanya wabah dan para vampir dan anak anak yg selamat akan di ambil setiap hari darahnya.
+            </div>    
 
-<!-- Deskripsi -->
-<div class="desc">
-  <strong>anime wabah virus yang tersebar</strong>
-  menceritakan tentang adanya wabah dan para vampir dan anak anak yg selamat akan di ambil setiap hari darahnya.
-</div>    
+            <div class="film">
+                <iframe id="online-video2" 
+                    src="https://www.youtube.com/embed/wy5gjVF64QM?si=EfCdQdx410uUd4_G"
+                    width="100%" height="500" frameborder="0"
+                    allowfullscreen>
+                </iframe>
+            </div>
 
-    <div class="film">
-  <!-- Video Lokal (offline) -->
-  <video id="offline-video2" controls width="100%" height="500" style="display:none;" preload="auto">
-    <source src="video1.mp4" type="video/mp4">
-  </video>
+            <div class="desc">
+                <strong>penduduk desa di landa wabah kematian</strong>
+                di penduduk desa yg tiba tiba ada wabah kematian yang sangat mematikan dan mengerikan.
+            </div>    
 
-  <!-- YouTube Embed (online) -->
-  <iframe id="online-video2" 
-      src="https://www.youtube.com/embed/wy5gjVF64QM?si=EfCdQdx410uUd4_G"
-      width="100%" height="500" frameborder="0"
-      allowfullscreen>
-  </iframe>
-</div>
+            <div class="film">
+                <iframe id="online-video3" 
+                    src="https://www.youtube.com/embed/Zn53QauRbT8?si=aWD5GpupGRdy-Csa"
+                    width="100%" height="500" frameborder="0"
+                    allowfullscreen>
+                </iframe>
+            </div>
 
-<!-- Deskripsi -->
-<div class="desc">
-  <strong>penduduk desa di landa wabah kematian</strong>
-  di penduduk desa yg tiba tiba ada wabah kematian yang sangat mematikan dan mengerikan.
-</div>    
+            <div class="desc">
+                <strong>tidur selama 1000 tahun</strong>
+                di ceritakan seorang lelaki yang tidur selama 1000 tahun untuk melindungi umat manusia.
+            </div>    
+            
+            <div class="film">
+                <iframe id="online-video4" 
+                    src="https://www.youtube.com/embed/BcLZLnz8r7U?si=iBf1oAtXv7gPJ7c9"
+                    width="100%" height="500" frameborder="0"
+                    allowfullscreen>
+                </iframe>
+            </div>
 
-    <div class="film">
-  <!-- Video Lokal (offline) -->
-  <video id="offline-video2" controls width="100%" height="500" style="display:none;" preload="auto">
-    <source src="video1.mp4" type="video/mp4">
-  </video>
+            <div class="desc">
+                <strong>pura pura terlihat lemah aslinya overpower</strong>
+                dikira lemah ternyata overpower 🔥
+            </div>
 
-  <!-- YouTube Embed (online) -->
-  <iframe id="online-video2" 
-      src="https://www.youtube.com/embed/Zn53QauRbT8?si=aWD5GpupGRdy-Csa"
-      width="100%" height="500" frameborder="0"
-      allowfullscreen>
-  </iframe>
-</div>
+            <div class="film">
+                <iframe id="online-video5" 
+                    src="https://www.youtube.com/embed/DG3rvJ9hAro?si=ETtbIACTL7-Jm5gs"
+                    width="100%" height="500" frameborder="0"
+                    allowfullscreen>
+                </iframe>
+            </div>
 
-<!-- Deskripsi -->
-<div class="desc">
-  <strong>tidur selama 1000 tahun</strong>
-  di ceritakan seorang lelaki yang tidur selama 1000 tahun untuk melindungi umat manusia.
-</div>    
-    
-<!-- Contoh 1 Video -->
-<div class="film">
-  <!-- Video Lokal (offline) -->
-  <video id="offline-video1" controls width="100%" height="500" style="display:none;" preload="auto">
-    <source src="video1.mp4" type="video/mp4">
-  </video>
+            <div class="desc">
+                <strong>wabah virus zombie</strong>
+                wabah virus zombie yang saling membunuh demi bertahan hidup ☠️
+            </div>
+        </div>
 
-  <!-- YouTube Embed (online) -->
-  <iframe id="online-video1" 
-      src="https://www.youtube.com/embed/BcLZLnz8r7U?si=iBf1oAtXv7gPJ7c9"
-      width="100%" height="500" frameborder="0"
-      allowfullscreen>
-  </iframe>
-</div>
-
-<!-- Deskripsi -->
-<div class="desc">
-  <strong>pura pura terlihat lemah aslinya overpower</strong>
-  dikira lemah ternyata overpower 🔥
-</div>
-
-<div class="film">
-  <!-- Video Lokal (offline) -->
-  <video id="offline-video1" controls width="100%" height="500" style="display:none;" preload="auto">
-    <source src="video1.mp4" type="video/mp4">
-  </video>
-
-  <!-- YouTube Embed (online) -->
-  <iframe id="online-video1" 
-      src="https://www.youtube.com/embed/DG3rvJ9hAro?si=ETtbIACTL7-Jm5gs"
-      width="100%" height="500" frameborder="0"
-      allowfullscreen>
-  </iframe>
-</div>
-
-<!-- Deskripsi -->
-<div class="desc">
-  <strong>wabah virus zombie</strong>
-  wabah virus zombie yang saling membunuh demi bertahan hidup ☠️
-</div>
-
-<script>
-  // Ganti otomatis kalau offline
-  if (!navigator.onLine) {
-      document.getElementById("online-video1").style.display = "none";
-      document.getElementById("offline-video1").style.display = "block";
-  }
-
-  // Daftarkan Service Worker
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js')
-      .then(() => console.log("Service Worker aktif ✅"))
-      .catch(err => console.log("SW gagal:", err));
-  }
-</script>
-
-<script>
-
-// Efek glow saat scroll
-window.addEventListener('scroll', function() {
-    document.querySelectorAll('iframe').forEach(iframe => {
-        let rect = iframe.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-            iframe.classList.add('glow');
-        } else {
-            iframe.classList.remove('glow');
-        }
-    });
-});
-</script>
-
-    <!-- Popups -->
-    <div id="overlay"></div>
-    <div id="error-popup"></div>
-    <div id="success-popup">
-        <i class="fas fa-check-circle"></i>
-        PENDAFTARAN ANDA BERHASIL
+        <!-- Popups -->
+        <div id="overlay"></div>
+        <div id="error-popup"></div>
+        <div id="success-popup">
+            <i class="fas fa-check-circle"></i>
+            PENDAFTARAN ANDA BERHASIL
+        </div>
     </div>
 
     <script>
@@ -821,6 +732,50 @@ window.addEventListener('scroll', function() {
             }
         }
 
+        // Efek glow saat scroll
+        window.addEventListener('scroll', function() {
+            document.querySelectorAll('iframe, video').forEach(video => {
+                let rect = video.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    video.classList.add('glow');
+                } else {
+                    video.classList.remove('glow');
+                }
+            });
+        });
+
+        // Typewriter effect
+        const lines = [
+            "Welcome To Web Film Lynzx",
+            "Cocok Buat Nonton Santay",
+            "Dan Pastinya Tanpa Iklan 🔥"
+        ];
+
+        let lineIndex = 0;
+        let charIndex = 0;
+        const speed = 100; // kecepatan ketik (ms per huruf)
+        const container = document.getElementById("typewriter");
+
+        function typeLine() {
+            if (lineIndex < lines.length) {
+                if (charIndex < lines[lineIndex].length) {
+                    container.innerHTML =
+                        (container.innerHTML.replace('<span class="cursor"></span>', "") || "") +
+                        lines[lineIndex].charAt(charIndex) +
+                        '<span class="cursor"></span>';
+                    charIndex++;
+                    setTimeout(typeLine, speed);
+                } else {
+                    container.innerHTML = container.innerHTML.replace('<span class="cursor"></span>', "") + "<br>";
+                    charIndex = 0;
+                    lineIndex++;
+                    setTimeout(typeLine, 500); // jeda antar baris
+                }
+            } else {
+                container.innerHTML = container.innerHTML.replace('<span class="cursor"></span>', "");
+            }
+        }
+
         // 6. Jalankan semua setelah dokumen siap
         document.addEventListener('DOMContentLoaded', function() {
             // Sembunyikan loading screen setelah 3 detik
@@ -833,51 +788,12 @@ window.addEventListener('scroll', function() {
             
             initTheme();
             setupEventListeners();
+            
+            // mulai animasi ketikan setelah 2 detik loading hilang
+            setTimeout(() => {
+                typeLine();
+            }, 2000);
         });
-const lines = [
-  "Welcome To Web Film Lynzx",
-  "Cocok Buat Nonton Santay",
-  "Dan Pastinya Tanpa Iklan 🔥"
-];
-
-let lineIndex = 0;
-let charIndex = 0;
-const speed = 100; // kecepatan ketik (ms per huruf)
-const container = document.getElementById("typewriter");
-
-function typeLine() {
-  if (lineIndex < lines.length) {
-    if (charIndex < lines[lineIndex].length) {
-      container.innerHTML =
-        (container.innerHTML.replace('<span class="cursor"></span>', "") || "") +
-        lines[lineIndex].charAt(charIndex) +
-        '<span class="cursor"></span>';
-      charIndex++;
-      setTimeout(typeLine, speed);
-    } else {
-      container.innerHTML = container.innerHTML.replace('<span class="cursor"></span>', "") + "<br>";
-      charIndex = 0;
-      lineIndex++;
-      setTimeout(typeLine, 500); // jeda antar baris
-    }
-  } else {
-    container.innerHTML = container.innerHTML.replace('<span class="cursor"></span>', "");
-  }
-}
-
-// Jalankan setelah loading hilang + jeda 2 detik
-document.addEventListener("DOMContentLoaded", () => {
-  setTimeout(() => {
-    const loading = document.getElementById("loading");
-    if (loading) loading.style.display = "none";
-
-    // mulai animasi ketikan setelah 2 detik loading hilang
-    setTimeout(() => {
-      typeLine();
-    }, 2000);
-
-  }, 3000); // loading hilang setelah 3 detik
-});
-</script>
+    </script>
 </body>
-</html>
+                    </html>
